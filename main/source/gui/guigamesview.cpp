@@ -785,6 +785,15 @@ int GuiGamesView::lua_bootGame(lua_State* L) {
             thisView->gameConfig.getValue("Max Pads", &tempVal);
             cfg.MaxPads = tempVal;
 
+            tempVal = 1;
+            thisView->gameConfig.getValue("BBA Emulation", &tempVal);
+            if (tempVal)
+              cfg.Config |= NIN_CFG_BBA_EMU;
+
+            tempVal = 4;
+            thisView->gameConfig.getValue("BBA Network Profile", &tempVal);
+            cfg.NetworkProfile = tempVal;
+
             tempVal = 0;
             thisView->gameConfig.getValue("Video Width", &tempVal);
             cfg.VideoScale = tempVal - 600;
